@@ -1,0 +1,18 @@
+<div style="padding:20px;"
+     ng-style="{'background-color': ($ctrl.selectedItem == $ctrl.item) ?  'hotpink' : 'lightsteelblue' }" >
+
+    <h2>{{$ctrl.item.from}} - {{$ctrl.item.to}}</h2>
+    <p>Flugnr. #{{$ctrl.item.id}}</p>
+    <p>Date: {{$ctrl.item.date | date:'short'}}</p>
+
+    <p>
+        <input
+                type="button"
+                value="Select"
+                class="btn btn-default"
+                ng-click="$ctrl.select()" />
+
+        <ng-transclude></ng-transclude>
+
+    </p>
+</div>

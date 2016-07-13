@@ -1,0 +1,96 @@
+<h1>Flight Search!</h1>
+
+<!--
+Outer: <input ng-model="$ctrl.info">
+<div ng-if="true">
+    Inner: <input ng-model="$ctrl.info">
+</div>
+-->
+
+<form name="form" novalidate>
+
+    <div class="form-group">
+        <label>From:</label>
+        <input
+                name="from"
+                class="form-control"
+                ng-model="$ctrl.from"
+                required
+                minlength="3"
+                maxlength="30"
+                city="HAM,GRZ,Wien,Oslo,München,Berlin"
+                city2
+                city-async
+        >
+    </div>
+
+    <div ng-if="form.from.$invalid">
+        From is invalid!
+    </div>
+
+    <div ng-if="form.from.$error.city">
+        City!
+    </div>
+
+    <div ng-if="form.from.$error.city2">
+        City2!
+    </div>
+
+    <div ng-if="form.from.$error.cityAsync">
+        CityAsync!
+    </div>
+
+    <div ng-if="form.from.$pending.cityAsync">
+        <marquee>Validating ... Plase wait ...</marquee>
+    </div>
+
+    <div ng-if="form.from.$error.required">
+        Required!
+    </div>
+
+    <div ng-if="form.from.$error.minlength">
+        MinLength!
+    </div>
+
+    <div ng-if="form.from.$error.maxlength">
+        MaxLength!
+    </div>
+
+    <div ng-messages="form.from.$error">
+        <div ng-message="required">Required!!!</div>
+        <div ng-message="minlength">Minlength 3!!!</div>
+    </div>
+
+    <div ng-messages="form.from.$error">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+
+    <div class="form-group">
+        <label>To:</label>
+        <input class="form-control" ng-model="$ctrl.to" name="to">
+    </div>
+    <div class="form-group">
+        <button
+                ng-disabled="form.$invalid"
+                class="btn btn-primary"
+                ng-click="$ctrl.search()">Search!</button>
+    </div>
+</form>
+
+
+<div ng-repeat="f in $ctrl.flights" class="col-sm-4">
+    <flight-card
+            item="f"
+            selected-item="$ctrl.selectedFlight"
+            selected-item-change="$ctrl.select($event)">
+
+        <a  class="btn btn-default" ui-sref="flightBooking.flightEdit({id: f.id})">Edit</a>
+    </flight-card>
+
+</div>
+
+
+<pre>Warenkorb
+----------------------
+{{$ctrl.selectedFlight | json }}
+</pre>

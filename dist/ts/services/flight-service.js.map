@@ -1,0 +1,1 @@
+{"version":3,"file":"flight-service.js","sourceRoot":"","sources":["../../../app/services/flight-service.ts"],"names":["FlightService","FlightService.constructor","FlightService.find"],"mappings":"AACA;IAAAA;IAMAC,CAACA;IAJGD,4BAAIA,GAAJA,UAAKA,IAAYA,EAAEA,EAAUA;IAE7BE,CAACA;IAELF,oBAACA;AAADA,CAACA,AAND,IAMC;AANY,qBAAa,gBAMzB,CAAA"}
